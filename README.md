@@ -10,9 +10,9 @@ Beberapa studi telah menunjukan bahwa dengan memanfaatakn data historis pengguna
 Proyek ini bertujuan untuk membangun sistem rekomendasi parfum yang cerdas, dengan memanfaatkan data pengguna yang kaya informasi. Dengan pendekatan ini, diharapkan pengguna dapat lebih cepat menemukan parfum ideal mereka, dan brand dapat meningkatkan efektivitas strategi pemasaran produknya.
 
 **Tambahan**
-1. Memilih parfum yang tepat bisa menjadi sulit karena banyaknya variasi produk yang tersedia, sehingga sering kali menyebabkan pembelian yang tidak memuaskan dan pemborosan biaya. Sistem rekomendasi yang personal dapat meningkatkan kepuasan dan loyalitas pelanggan dengan mencocokkan produk sesuai preferensi individu (Ricci et al., 2015). Selain itu, sistem ini membantu merek dalam menargetkan pemasaran secara lebih efektif dengan memahami kebutuhan konsumen yang beragam (Aggarwal, 2016). Penelitian menunjukkan bahwa sistem rekomendasi berbasis machine learning meningkatkan akurasi dalam menyarankan parfum dan meningkatkan tingkat pembelian (Xie et al., 2020).
+1. Memilih parfum yang tepat bisa jadi sulit karena banyaknya pilihan produk, sehingga sering menyebabkan pembelian yang kurang memuaskan dan pemborosan. Sistem rekomendasi yang personal dapat membantu meningkatkan kepuasan pelanggan dengan memberikan saran produk yang sesuai preferensi individu. Selain itu, sistem ini membantu brand menargetkan pemasaran dengan lebih efektif berdasarkan pola perilaku konsumen. Studi menyatakan bahwa sistem rekomendasi berbasis machine learning meningkatkan akurasi rekomendasi dan pengalaman pengguna
 2. **Refrensi :**
-   - \[Ricci et al., 2015] Ricci, F., Rokach, L., Shapira, B., & Kantor, P. B. (2015). *Recommender Systems Handbook* (2nd ed.). Springer. [https://doi.org/10.1007/978-1-4899-7637-6](https://doi.org/10.1007/978-1-4899-7637-6)
-   - \[Aggarwal, 2016] Aggarwal, C. C. (2016). *Recommender Systems: The Textbook*. Springer. [https://doi.org/10.1007/978-3-319-29659-3](https://doi.org/10.1007/978-3-319-29659-3)
+   - J. Bobadilla, F. Ortega, A. Hernando, dan A. Gutiérrez, "Recommender systems survey," *Knowledge-Based Systems*, vol. 46, hal. 109-132, 2013. [https://doi.org/10.1016/j.knosys.2013.03.012](https://doi.org/10.1016/j.knosys.2013.03.012)
+   - S. Zhang, L. Yao, A. Sun, dan Y. Tay, "Deep learning based recommender system: A survey and new perspectives," *ACM Computing Surveys*, vol. 52, no. 1, hal. 1-38, 2019. [https://doi.org/10.1145/3285029](https://doi.org/10.1145/3285029)
   
      
