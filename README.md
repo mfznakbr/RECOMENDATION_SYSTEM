@@ -72,3 +72,21 @@ Metrik ini sesuai terutama dengan problem statement dan Goals, karena :
 * Cosine similarity menghitung seberapa mirip dua siswa berdasarkan fitur-fitur mereka (nilai matematika, membaca, menulis, dan status kursus).
 * Dengan nilai similarity yang tinggi, kita bisa yakin bahwa dua siswa tersebut memiliki profil belajar yang mirip.
 * Maka, gaya belajar yang cocok untuk siswa A kemungkinan besar juga akan cocok untuk siswa B jika similarity-nya tinggi.
+
+**Tambahan**
+### 📌 Formula Cosine Similarity
+
+$$
+\text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \|B\|}
+$$
+
+Di mana:
+
+* \$A\$ dan \$B\$ adalah **vektor fitur dua siswa**
+* \$A \cdot B\$ adalah **perkalian dot product** antara kedua vektor
+* \$|A|\$ dan \$|B|\$ adalah **magnitudo (panjang)** dari masing-masing vektor
+
+Nilai Cosine Similarity berada dalam rentang **0 hingga 1**:
+
+* **1** berarti dua siswa sangat mirip
+* **0** berarti mereka sangat berbeda
