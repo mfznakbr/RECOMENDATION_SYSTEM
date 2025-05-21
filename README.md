@@ -39,4 +39,18 @@ Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
   - "Female mendominasi gender sebesar 52%"
   - "Banyak dari siswa berasal dari Group C yaitu 31.9%"
   - ![image](https://github.com/user-attachments/assets/72eff71a-8fd0-4278-af0c-b69f7e5924f0)
+ 
+## DATA PREPARATION
+Tahapan data preparation adalah sebagai berikut :
+- Encoding
+- Standarisasi
 
+**Tambahan :**
+1. Encoding
+   - Metode : Melakukan transformasi fitur kategorikal menjadi fitur numerik biner menggunakan OneHotEncode dari sklearn
+   - Alasan :
+     * Algoritma machine learning tidak bisa bekerja langsung dengan data kategorikal
+     * OneHotEncoding membuat data kategorikal bisa diproses sebagai input numerik
+2. Standarisasi
+   - Metode : Melakukan standarisasi fitur numerik menggunakan StandardScaler dari sklearn
+   - Alasan : Standarisasi memastikan semua fitur numerik berkonstribusi secara seimbang dalam perhitungan model.
