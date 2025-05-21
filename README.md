@@ -62,7 +62,12 @@ Tahapan modeling pada proyek ini menggunakan pendekatan Content-Based-Filtering.
 
 1. Representasi Fitur : Semua fitur (baik itu num atau categorical) diproses dan disatukan. Data ini disimpan dalam sebuah *numpy array* bernama `FITUR`.yang diambil dari dataframe hasil *preprocessing* : `FITUR = df_preparasi.values`.
 2. Menghitung Similarity : Mengukur kemiripan antar siswa, menggunakan cosine similarity, yaitu ukuran kesamaan sudut antara dua vektor : `similarity_matrix = cosine_similarity(FITUR)`.
-3. Top-N Recomendation
+3. Top-N Recomendation : 5 siswa yang paling mirip dengan siswa ke-9 
+   [(914, np.float64(0.9259905979991441)),
+ (794, np.float64(0.9223807734647653)),
+ (396, np.float64(0.9208315030860833)),
+ (842, np.float64(0.9040530058932298)),
+ (980, np.float64(0.9032403073536728))]
 
 ## EVALUASI 
 Untuk mengevaluasi sistem rekomendasi ini, digunakan Cosine Similarity sebagai metrik utama. Metrik ini umum digunakan dalam sistem rekomendasi berbasis content-based filtering karena mampu mengukur tingkat kemiripan antar entitas berdasarkan sudut antar vektor fitur.
