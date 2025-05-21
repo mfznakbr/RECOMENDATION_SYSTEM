@@ -57,7 +57,18 @@ Tahapan data preparation adalah sebagai berikut :
   
 ## MODELING
 Tahapan modeling pada proyek ini menggunakan pendekatan Content-Based-Filtering. Sistem ini merekomendasikan gaya belajar kepada siswa berdasarkan kesaman fitur antar siswa satu dengan yang lain, seperti skor ujian, status kursus persiapan, dan fitur demografis lainnya.
+
 **Cara Kerja :**
+
 1. Representasi Fitur : Semua fitur (baik itu num atau categorical) diproses dan disatukan. Data ini disimpan dalam sebuah *numpy array* bernama `FITUR`.yang diambil dari dataframe hasil *preprocessing* : `FITUR = df_preparasi.values`.
 2. Menghitung Similarity : Mengukur kemiripan antar siswa, menggunakan cosine similarity, yaitu ukuran kesamaan sudut antara dua vektor : `similarity_matrix = cosine_similarity(FITUR)`.
 3. Top-N Recomendation
+
+## EVALUASI 
+Untuk mengevaluasi sistem rekomendasi ini, digunakan Cosine Similarity sebagai metrik utama. Metrik ini umum digunakan dalam sistem rekomendasi berbasis content-based filtering karena mampu mengukur tingkat kemiripan antar entitas berdasarkan sudut antar vektor fitur.
+Berdasarkan output, siswa ke-9 paling mirip dengan siswa ke-914, 794, 396, dst., dengan skor kemiripan lebih dari 0.90. Ini menunjukkan bahwa sistem dapat mengidentifikasi kelompok siswa yang memiliki karakteristik belajar yang sangat serupa.
+
+Metrik ini sesuai terutama dengan problem statement dan Goals, karena :
+* Cosine similarity menghitung seberapa mirip dua siswa berdasarkan fitur-fitur mereka (nilai matematika, membaca, menulis, dan status kursus).
+* Dengan nilai similarity yang tinggi, kita bisa yakin bahwa dua siswa tersebut memiliki profil belajar yang mirip.
+* Maka, gaya belajar yang cocok untuk siswa A kemungkinan besar juga akan cocok untuk siswa B jika similarity-nya tinggi.
