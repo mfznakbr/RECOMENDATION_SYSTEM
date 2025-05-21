@@ -54,3 +54,10 @@ Tahapan data preparation adalah sebagai berikut :
 2. Standarisasi
    - Metode : Melakukan standarisasi fitur numerik menggunakan StandardScaler dari sklearn
    - Alasan : Standarisasi memastikan semua fitur numerik berkonstribusi secara seimbang dalam perhitungan model.
+  
+## MODELING
+Tahapan modeling pada proyek ini menggunakan pendekatan Content-Based-Filtering. Sistem ini merekomendasikan gaya belajar kepada siswa berdasarkan kesaman fitur antar siswa satu dengan yang lain, seperti skor ujian, status kursus persiapan, dan fitur demografis lainnya.
+**Cara Kerja :**
+1. Representasi Fitur :
+2. Menghitung Similarity :
+3. Top-N Recomendation
