@@ -74,7 +74,7 @@ Metrik ini sesuai terutama dengan problem statement dan Goals, karena :
 * Maka, gaya belajar yang cocok untuk siswa A kemungkinan besar juga akan cocok untuk siswa B jika similarity-nya tinggi.
 
 **Tambahan**
-### 📌 Formula Cosine Similarity
+### Formula Cosine Similarity
 
 $$
 \text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \|B\|}
