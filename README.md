@@ -117,15 +117,28 @@ berikut beberapa langkah - langkah pada fungsi :
 Tujuan proyek ini adalah membuat ssitem yang dapat merekomendasikan lagu berdasarkan beberapa fitur, bukan berdasarkan popularitas atau perilaku pengguna. Oleh karena itu, pendekatan content based filtering sangat cocok, karena :
 - Tidak bergantung pada histori pengguna
 - Rekomendasi berbasis karakteristik produk itu sendiri which is lagu pada project ini.
+
+TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
+### 🦉 Menampilkan Lagu Mirip dengan 'Boyfriend' berdasarkan Durasi, Danceability, dan Valence
+
+| No | Durasi (ms) | Danceability | Tingkat Keceriaan (Valence) | Judul Lagu                     | Artist              |
+|----|-------------|--------------|------------------------------|--------------------------------|---------------------|
+| 1  | 239360      | 0.727        | 0.794                        | About to Die                   | Dirty Projectors    |
+| 2  | 162040      | 0.513        | 0.521                        | Will You Love Me Tomorrow      | The Shirelles       |
+| 3  | 222029      | 0.664        | 0.728                        | Touch Me (I Want Your Body)    | Samantha Fox        |
+| 4  | 254067      | 0.779        | 0.857                        | Take Me There - Remix          | Blackstreet         |
+| 5  | 273853      | 0.787        | 0.867                        | Okay                            | Holy Ghost!         |
+
+
   
 ## EVALUASI 
 Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering digunakan metrik precision. Metrik ini digunakan untuk mengukur proporsi lagu yang relevan (disukai) dari total lagu yang direkomendasikan.
 
 **Alasan Pemilihan Metrik Precision :**
-Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya (durasi, danceability, dan valence), maka kita perlu tahu apakah lagu-lagu tersebut benar-benar sesuai dengan preferensi pengguna. Label target (1 = suka, 0 = tidak suka) digunakan sebagai indikator relevansi. Oleh karena itu, precision adalah metrik yang paling tepat digunakan.
+* Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya (durasi, danceability, dan valence), maka kita perlu tahu apakah lagu-lagu tersebut benar-benar sesuai dengan preferensi pengguna. Label target (1 = suka, 0 = tidak suka) digunakan sebagai indikator relevansi. Oleh karena itu, precision adalah metrik yang paling tepat digunakan.
 
 **Kesimpulan** :
-Dengan nilai **precision sebesar 60%**, sistem rekomendasi ini telah berhasil memberikan hasil yang relevan untuk sebagian besar lagu yang direkomendasikan. Ini menunjukkan bahwa pendekatan **content-based filtering** dengan **cosine similarity** pada fitur-fitur musik seperti **durasi**, **danceability**, dan **valence** mampu mengenali karakteristik lagu yang mirip dan menyajikan rekomendasi yang sesuai dengan preferensi pengguna.
+* Dengan nilai **precision sebesar 60%**, sistem rekomendasi ini telah berhasil memberikan hasil yang relevan untuk sebagian besar lagu yang direkomendasikan. Ini menunjukkan bahwa pendekatan **content-based filtering** dengan **cosine similarity** pada fitur-fitur musik seperti **durasi**, **danceability**, dan **valence** mampu mengenali karakteristik lagu yang mirip dan menyajikan rekomendasi yang sesuai dengan preferensi pengguna.
 
 Hal ini sejalan dengan **problem statement** yang diangkat, yaitu **pengguna sering kesulitan menemukan lagu yang benar-benar sesuai dengan preferensi dan suasana hati mereka secara cepat dan akurat**, terutama di tengah banyaknya pilihan lagu yang tersedia. Sistem ini membantu mengatasi masalah tersebut dengan menyaring dan menyarankan lagu-lagu yang secara konten memiliki kemiripan tinggi dengan lagu favorit pengguna.
 
