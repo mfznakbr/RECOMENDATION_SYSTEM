@@ -50,7 +50,7 @@ Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
   - "Disukai mendominasi target sebesar 50.57%"
   - ![image](https://github.com/user-attachments/assets/5b372454-a6f0-4691-a7df-010d4a9b32b6)
 
-  - "Banyak dari siswa berasal dari Group C yaitu 49.43%"
+  - "terdapat korelasi tinggi antar fitur tertentu, seperti energy dan loudness (0.76)"
   - ![image](https://github.com/user-attachments/assets/095f0abb-87a9-4b31-96f5-e8de9036d162)
 
  
@@ -119,30 +119,37 @@ Tujuan proyek ini adalah membuat ssitem yang dapat merekomendasikan lagu berdasa
 - Rekomendasi berbasis karakteristik produk itu sendiri which is lagu pada project ini.
   
 ## EVALUASI 
-Untuk mengevaluasi sistem rekomendasi ini, digunakan Cosine Similarity sebagai metrik utama. Metrik ini umum digunakan dalam sistem rekomendasi berbasis content-based filtering karena mampu mengukur tingkat kemiripan antar entitas berdasarkan sudut antar vektor fitur.
-Berdasarkan output, siswa ke-9 paling mirip dengan siswa ke-914, 794, 396, dst., dengan skor kemiripan lebih dari 0.90. Ini menunjukkan bahwa sistem dapat mengidentifikasi kelompok siswa yang memiliki karakteristik belajar yang sangat serupa.
+Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering digunakan metrik precision. Metrik ini digunakan untuk mengukur proporsi lagu yang relevan (disukai) dari total lagu yang direkomendasikan.
 
-Metrik ini sesuai terutama dengan problem statement dan Goals, karena :
-* Cosine similarity menghitung seberapa mirip dua siswa berdasarkan fitur-fitur mereka (nilai matematika, membaca, menulis, dan status kursus).
-* Dengan nilai similarity yang tinggi, kita bisa yakin bahwa dua siswa tersebut memiliki profil belajar yang mirip.
-* Maka, gaya belajar yang cocok untuk siswa A kemungkinan besar juga akan cocok untuk siswa B jika similarity-nya tinggi.
+**Alasan Pemilihan Metrik Precision :**
+Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya (durasi, danceability, dan valence), maka kita perlu tahu apakah lagu-lagu tersebut benar-benar sesuai dengan preferensi pengguna. Label target (1 = suka, 0 = tidak suka) digunakan sebagai indikator relevansi. Oleh karena itu, precision adalah metrik yang paling tepat digunakan.
 
+**Kesimpulan** :
+Dengan nilai **precision sebesar 60%**, sistem rekomendasi ini telah berhasil memberikan hasil yang relevan untuk sebagian besar lagu yang direkomendasikan. Ini menunjukkan bahwa pendekatan **content-based filtering** dengan **cosine similarity** pada fitur-fitur musik seperti **durasi**, **danceability**, dan **valence** mampu mengenali karakteristik lagu yang mirip dan menyajikan rekomendasi yang sesuai dengan preferensi pengguna.
 
+Hal ini sejalan dengan **problem statement** yang diangkat, yaitu **pengguna sering kesulitan menemukan lagu yang benar-benar sesuai dengan preferensi dan suasana hati mereka secara cepat dan akurat**, terutama di tengah banyaknya pilihan lagu yang tersedia. Sistem ini membantu mengatasi masalah tersebut dengan menyaring dan menyarankan lagu-lagu yang secara konten memiliki kemiripan tinggi dengan lagu favorit pengguna.
+
+Selain itu, hasil ini juga mendukung **goal proyek**, yaitu mengembangkan sistem rekomendasi berbasis content-based filtering yang dapat **meningkatkan pengalaman dan kepuasan pengguna dalam mendengarkan musik**. Dengan mempertimbangkan aspek-aspek musikal seperti *mood* (valence), *energi* lagu (danceability), dan *durasi*, sistem ini memberikan rekomendasi yang tidak hanya teknis relevan, tetapi juga sesuai dengan emosi atau suasana yang diinginkan pengguna.
+
+Namun demikian, hasil precision sebesar 60% juga menunjukkan bahwa masih ada **ruang untuk peningkatan**, misalnya dengan menambahkan fitur lain (seperti genre, artist similarity, atau mood tagging) atau menggabungkan pendekatan ini dengan metode hybrid agar hasil rekomendasi menjadi lebih personal dan akurat.
 
 **Tambahan**
-### Formula Cosine Similarity
+### Precision
+**Precision** adalah metrik evaluasi yang digunakan untuk mengukur seberapa banyak item yang direkomendasikan benar-benar relevan.
+
+**Rumus precision:**
 
 $$
-\text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \|B\|}
+\text{Precision} = \frac{\text{Jumlah lagu relevan yang direkomendasikan}}{\text{Jumlah total lagu yang direkomendasikan (k)}}
 $$
 
-Di mana:
+**Contoh cara kerja:**
 
-* \$A\$ dan \$B\$ adalah **vektor fitur dua siswa**
-* \$A \cdot B\$ adalah **perkalian dot product** antara kedua vektor
-* \$|A|\$ dan \$|B|\$ adalah **magnitudo (panjang)** dari masing-masing vektor
+Jika dari 5 lagu yang direkomendasikan, terdapat 3 lagu yang sesuai preferensi pengguna (label `target = 1`), maka precision-nya:
 
-Nilai Cosine Similarity berada dalam rentang **0 hingga 1**:
+$$
+\frac{3}{5} = 0.60 \text{ atau } 60\%
+$$
 
-* **1** berarti dua siswa sangat mirip
-* **0** berarti mereka sangat berbeda
+**Kenapa cocok?**
+Karena dalam sistem rekomendasi, kita ingin memastikan **lagu-lagu yang ditampilkan memang sesuai minat pengguna**. Metrik ini fokus pada **akurasi hasil yang ditampilkan**, bukan jumlah total yang tersedia.
