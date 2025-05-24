@@ -80,8 +80,8 @@ Tahapan data preparation adalah sebagai berikut :
    - Metode : Menggunakan fungsi pd.DataFrame untuk membuat dataframe dari kolom yg telah di ekstraksi. Mengubah nama kolom agar lebih mudah dibaca seperti :
      * "song_title" diubah menjadi "Judul Lagu"
      * "artist" tetap
-     * "duration_ms" menjadi "Durasi Per Mildetik"
-     * "danceability" menjadi "dance"
+     * "duration_ms" menjadi "Durasi /mildetik"
+     * "danceability" tetap
      * "valence" menjadi "tingkat keceriaan"
    - Alasan : Dengan menggabungkan semua fitur yang dipilih ke dalam dataframe, proses seperti normalisasi akan jadi lebih efisien
 4. Normalisasi Fitur Numerik.
@@ -99,6 +99,25 @@ Sistem rekomendasi yang digunakan pada proyek ini adalah content-based-filtering
 * danceability(seberapa cocok lagu untuk dance)
 * valence (tingkat keceriaan lagu)
 
+♦️ **Alasan Pemilihan Cosine Similarity** 
+Untuk mengukur kemiripan antar lagu berdasarkan ketiga fitur tersebut, digunakan **Cosine Similarity**. Cosine Similarity menghitung sudut antar dua vektor dalam ruang multidimensi, bukan jarak absolut. Ini cocok digunakan karena :
+1. Independen terhadap skala fitur: Cosine similarity mempertimbangkan arah vektor, bukan besarnya, sehingga cocok saat fitur sudah dinormalisasi.
+2. Fokus pada pola, bukan magnitude: Dua lagu dengan nilai absolut yang berbeda tapi pola fitur yang mirip (misalnya valence tinggi dan danceability tinggi) tetap dianggap mirip.
+3. Sesuai untuk data numerik berdimensi rendah hingga sedang, seperti tiga fitur musik yang digunakan di sini.
+
+🦾 **Cara Kerja Fungsi rekomendasi_lagu**
+berikut beberapa langkah - langkah pada fungsi :
+1. Validasi input : cek apakah lagu yang diminta ada pada dataset.
+2. Ambil index lagu : cari posisi lagu pada data frame.
+3. Hitung skor similarity : Menggunakan cosine_similarity antar lagu yang sudah dinormalisasi.
+4. Urutkan skor tertinggi: Lagu-lagu lain diurutkan berdasarkan kemiripan terhadap lagu input.
+5. Ambil Top-k: Mengambil k lagu dengan skor kemiripan tertinggi (tidak termasuk lagu itu sendiri).
+6. Tampilkan output: Lagu-lagu mirip ditampilkan berdasarkan fitur kontennya.
+
+Tujuan proyek ini adalah membuat ssitem yang dapat merekomendasikan lagu berdasarkan beberapa fitur, bukan berdasarkan popularitas atau perilaku pengguna. Oleh karena itu, pendekatan content based filtering sangat cocok, karena :
+- Tidak bergantung pada histori pengguna
+- Rekomendasi berbasis karakteristik produk itu sendiri which is lagu pada project ini.
+  
 ## EVALUASI 
 Untuk mengevaluasi sistem rekomendasi ini, digunakan Cosine Similarity sebagai metrik utama. Metrik ini umum digunakan dalam sistem rekomendasi berbasis content-based filtering karena mampu mengukur tingkat kemiripan antar entitas berdasarkan sudut antar vektor fitur.
 Berdasarkan output, siswa ke-9 paling mirip dengan siswa ke-914, 794, 396, dst., dengan skor kemiripan lebih dari 0.90. Ini menunjukkan bahwa sistem dapat mengidentifikasi kelompok siswa yang memiliki karakteristik belajar yang sangat serupa.
@@ -107,6 +126,8 @@ Metrik ini sesuai terutama dengan problem statement dan Goals, karena :
 * Cosine similarity menghitung seberapa mirip dua siswa berdasarkan fitur-fitur mereka (nilai matematika, membaca, menulis, dan status kursus).
 * Dengan nilai similarity yang tinggi, kita bisa yakin bahwa dua siswa tersebut memiliki profil belajar yang mirip.
 * Maka, gaya belajar yang cocok untuk siswa A kemungkinan besar juga akan cocok untuk siswa B jika similarity-nya tinggi.
+
+
 
 **Tambahan**
 ### Formula Cosine Similarity
