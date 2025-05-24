@@ -22,52 +22,82 @@ Proyek ini mengembangkan sistem rekomendasi lagu berbasis analisis fitur audio s
 ## Data Understanding
 **Sumber :** [*kagle*] [[https://www.kaggle.com/datasets/qasimrajput/perfume-recomendation](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)](https://www.kaggle.com/datasets/geomack/spotifyclassification/data)
 
-Dataset yang digunakan dalam proyek ini berisi 2017 entri data, dataset ini bersih dari missing value atau duplicated value, terdiri dari 3 variabel numerik dan 5 variabel object. 
+Dataset yang digunakan dalam proyek ini berisi 2017 entri data, dataset ini bersih dari missing value atau duplicated value, terdiri dari 15 variabel numerik dan 2 variabel object. 
 
 Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
-* `gender`: jenis kelamin (female/male)
-* `race/ethnicity`: kelompok etnis (group A-E)
-* `parental level of education`: pendidikan tertinggi orang tua
-* `lunch`: jenis makan siang (standard, free/reduced)
-* `test preparation course`: status mengikuti kursus persiapan tes (none/completed)
-* `math score`, `reading score`, `writing score`: skor ujian siswa mulai dari 0 - 100.
+* `Unnamed: 0`: ID unik setiap baris data
+* `acousticness`: tingkat keakustikan lagu, nilai antara 0-1 (semakin tinggi makin akustik)
+* `danceability`: seberapa cocok lagu untuk menari, nilai antara 0-1
+* `duration_ms`: durasi lagu dalam milidetik
+* `energy`: intensitas dan kekuatan lagu, nilai antara 0-1
+* `instrumentalness`: seberapa instrumental sebuah lagu, nilai antara 0-1
+* `key`: nada dasar lagu dalam angka (0-11)
+* `liveness`: kemungkinan ada suara penonton/live, nilai antara 0-1
+* `loudness`: tingkat keras lagu dalam decibel (dB)
+* `mode`: mode musik (mayor = 1, minor = 0)
+* `speechiness`: seberapa banyak elemen bicara dalam lagu, nilai antara 0-1
+* `tempo`: kecepatan lagu dalam BPM (beats per minute)
+* `time_signature`: jumlah ketukan per birama
+* `valence`: kesan emosional lagu (bahagia/sedih), nilai antara 0-1
+* `target`: label target, bisa berarti lagu disukai atau tidak (0/1)
+* `song_title`: judul lagu
+* `artist`: nama artis atau band pembuat lagu
 
 **TAMBAHAN**
 * Univariate analysis : fokus pada satu variabel saja.
-* Melakukan fungsi seperti value_counts() dan normalize = True untuk melihat distribusi kategori adalah bentuk analisis univariat terhadap fitur kategorikal.
+* Melakukan fungsi seperti value_counts() dan normalize = True untuk melihat distribusi kategori adalah bentuk analisis univariat terhadap fitur kategorikal. Serta menggunakan heatmap untuk melihat korelasi antar fitur numerik
 * Output seperti :
-  - "Female mendominasi gender sebesar 52%"
-  - "Banyak dari siswa berasal dari Group C yaitu 31.9%"
-  - ![image](https://github.com/user-attachments/assets/72eff71a-8fd0-4278-af0c-b69f7e5924f0)
+  - "Disukai mendominasi target sebesar 50.57%"
+  - ![image](https://github.com/user-attachments/assets/5b372454-a6f0-4691-a7df-010d4a9b32b6)
+
+  - "Banyak dari siswa berasal dari Group C yaitu 49.43%"
+  - ![image](https://github.com/user-attachments/assets/095f0abb-87a9-4b31-96f5-e8de9036d162)
+
  
 ## DATA PREPARATION
 Tahapan data preparation adalah sebagai berikut :
-- Encoding
-- Standarisasi
+- Pengecekan missing value dan duplicated value
+- Ekstraksi Fitur ke List
+- Buat Dataframe Untuk Model Sistem Rekomendasi
+- Normalisasi Fitur Numerik.
 
 **Tambahan :**
-1. Encoding
-   - Metode : Melakukan transformasi fitur kategorikal menjadi fitur numerik biner menggunakan OneHotEncode dari sklearn
+1. Pengecekan Missing Value dan Duplicate Value
+   - Metode : menggunakan fungsi isna().sum() untuk melihat jumlah missing value dan fungsi dupilcated().sum() untuk melihat adakah indikasi duplicate
+   - Hasil : Tidak ada missing value ataupun duplicated value dalam dataset.
+   - Alasan : Penting untuk memastikan integritas data sebelum lanjut ke tahap modeling atau tahap preparation selanjutnya. 
+2.    Ekstrasi Fitur ke List
+   - Metode : Menggunakan fungsi tolist() untuk beberapa kolom ialah :
+     * artist
+     * single_title
+     * valence
+     * danceability
+     * duration_ms
    - Alasan :
-     * Algoritma machine learning tidak bisa bekerja langsung dengan data kategorikal
-     * OneHotEncoding membuat data kategorikal bisa diproses sebagai input numerik
-2. Standarisasi
-   - Metode : Melakukan standarisasi fitur numerik menggunakan StandardScaler dari sklearn
-   - Alasan : Standarisasi memastikan semua fitur numerik berkonstribusi secara seimbang dalam perhitungan model.
+     * fitur tersebut mewakili karakteristik konten lagu yang akan digunakan dalam model rekomendasi berbasis content-based-filtering.
+     * fitur numerik seperti valence, danceability, dan duration_ms dipilih karena memiliki konstribusi signifikan dalam mengukur kemiripan antar lagu 
+3. Buat Dataframe untuk Sistem Rekomendasi.
+   - Metode : Menggunakan fungsi pd.DataFrame untuk membuat dataframe dari kolom yg telah di ekstraksi. Mengubah nama kolom agar lebih mudah dibaca seperti :
+     * "song_title" diubah menjadi "Judul Lagu"
+     * "artist" tetap
+     * "duration_ms" menjadi "Durasi Per Mildetik"
+     * "danceability" menjadi "dance"
+     * "valence" menjadi "tingkat keceriaan"
+   - Alasan : Dengan menggabungkan semua fitur yang dipilih ke dalam dataframe, proses seperti normalisasi akan jadi lebih efisien
+4. Normalisasi Fitur Numerik.
+   - Metode: Menggunakan `MinMaxScaler` dari `sklearn.preprocessing` untuk menormalisasi kolom:
+  * `valence`
+  * `danceability`
+  * `duration_ms`
+   - Alasan : Normalisasi penting agar fitur-fitur tersebut berada dalam skala yang sama (0–1), sehingga tidak ada fitur yang mendominasi perhitungan kemiripan
   
 ## MODELING
-Tahapan modeling pada proyek ini menggunakan pendekatan Content-Based-Filtering. Sistem ini merekomendasikan gaya belajar kepada siswa berdasarkan kesaman fitur antar siswa satu dengan yang lain, seperti skor ujian, status kursus persiapan, dan fitur demografis lainnya.
+🎵 **Penjelasan Sistem Rekomendasi Sistem Content-Based Filtering**
 
-**Cara Kerja :**
-
-1. Representasi Fitur : Semua fitur (baik itu num atau categorical) diproses dan disatukan. Data ini disimpan dalam sebuah *numpy array* bernama `FITUR`.yang diambil dari dataframe hasil *preprocessing* : `FITUR = df_preparasi.values`.
-2. Menghitung Similarity : Mengukur kemiripan antar siswa, menggunakan cosine similarity, yaitu ukuran kesamaan sudut antara dua vektor : `similarity_matrix = cosine_similarity(FITUR)`.
-3. Top-N Recomendation : 5 siswa yang paling mirip dengan siswa ke-9 
-   [(914, np.float64(0.9259905979991441)),
- (794, np.float64(0.9223807734647653)),
- (396, np.float64(0.9208315030860833)),
- (842, np.float64(0.9040530058932298)),
- (980, np.float64(0.9032403073536728))]
+Sistem rekomendasi yang digunakan pada proyek ini adalah content-based-filtering yaitu teknik yang memberikan rekomendasi berdasarkan kemiripan konten (fitur) dari item yang sudah dipilih pengguna. Dalam kasusu ini, sistem akan memberikan rekomendasi lagu - lagu yang memiliki karakteristik serupa dengan lagu yang dipilih, berdasarkan fitur seperti : 
+* durasi (durasi lagu dalam mildetik)
+* danceability(seberapa cocok lagu untuk dance)
+* valence (tingkat keceriaan lagu)
 
 ## EVALUASI 
 Untuk mengevaluasi sistem rekomendasi ini, digunakan Cosine Similarity sebagai metrik utama. Metrik ini umum digunakan dalam sistem rekomendasi berbasis content-based filtering karena mampu mengukur tingkat kemiripan antar entitas berdasarkan sudut antar vektor fitur.
