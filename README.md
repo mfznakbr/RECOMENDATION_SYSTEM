@@ -1,12 +1,12 @@
 # Laporan Proyek Machine Learning - Muhammad Fauzani Akbar
 
 ## Project Overview
-Proyek ini bertujuan mengembangkan sistem rekomendasi gaya belajar siswa berbasis data performa akademik dan karakteristik demografis. Masalah ini penting karena banyak siswa mengalami kesulitan dalam menentukan metode belajar yang paling sesuai dengan kondisi pribadi mereka. Gaya belajar yang tidak sesuai dapat berdampak pada rendahnya pemahaman materi dan performa akademik.
+Di era digital saat ini, jumlah lagu dan konten musik yang tersedia secara online terus meningkat secara eksponensial. Hal ini membuat pendengar seringkali kesulitan menemukan lagu-lagu yang sesuai dengan selera dan suasana hati mereka. Oleh karena itu, sistem rekomendasi musik menjadi solusi penting untuk membantu pengguna menemukan lagu yang relevan dan personal tanpa harus mencari secara manual.
 
-Dengan bantuan sistem rekomendasi, pendekatan belajar yang disarankan akan lebih relevan dan personal. Sistem ini memanfaatkan teknik content-based filtering untuk mencocokkan karakteristik siswa dengan siswa lain yang memiliki profil serupa, lalu memberikan saran gaya belajar berdasarkan pola yang ditemukan.
+Proyek ini mengembangkan sistem rekomendasi lagu berbasis analisis fitur audio seperti durasi, danceability, dan valence, yang bertujuan memberikan rekomendasi lagu-lagu yang memiliki karakteristik mirip dengan lagu favorit pengguna. Dengan pendekatan ini, diharapkan pengalaman mendengarkan musik menjadi lebih menyenangkan dan sesuai dengan preferensi tiap individu, sekaligus meningkatkan keterlibatan pengguna terhadap platform musik digital.
 
 **Tambahan**
-1. Masalah ini bersifat masig dan berdampak langsung terhadap kualitas pembelajaran siswa secara umum, dimana tidak semua siswa atau bahkan guru memiliki kemampuan untuk mengenali gaya belajar yang tepat, sehingga perlu bantuan sistem rekomendasi dengan basis data.
+1. Masalah kesulitan menemukan lagu yang tepat sesuai selera pengguna perlu diselesaikan karena dapat mengurangi kenyamanan dan kepuasan dalam menikmati musik digital yang semakin melimpah. Dengan mengembangkan sistem rekomendasi berbasis fitur audio yang akurat dan personal, pengguna dapat dengan mudah mendapatkan lagu-lagu yang relevan tanpa harus melakukan pencarian manual yang memakan waktu. Pendekatan ini tidak hanya meningkatkan pengalaman pengguna tetapi juga membantu platform musik dalam mempertahankan dan memperluas basis penggunanya.
 2. **Refrensi :**
    - J. Bobadilla, F. Ortega, A. Hernando, dan A. Gutiérrez, "Recommender systems survey," *Knowledge-Based Systems*, vol. 46, hal. 109-132, 2013. [https://doi.org/10.1016/j.knosys.2013.03.012](https://doi.org/10.1016/j.knosys.2013.03.012)
    - S. Zhang, L. Yao, A. Sun, dan Y. Tay, "Deep learning based recommender system: A survey and new perspectives," *ACM Computing Surveys*, vol. 52, no. 1, hal. 1-38, 2019. [https://doi.org/10.1145/3285029](https://doi.org/10.1145/3285029)
@@ -14,15 +14,15 @@ Dengan bantuan sistem rekomendasi, pendekatan belajar yang disarankan akan lebih
 ## Business Understanding
 
 ### Proble Statement
-* Siswa kesulitan menentukan metode belajar yang efektif sesua dengan kondisi dan kemampuan masing - masing.
+* Pengguna terkadang kesulitan menemukan lagu yang benar - benar sesuai dengan prefensi dan suasana hati mereka secara cepat dan akurat karena jumlah lagu yang tersedia sangat banyak.
 
 ### Goal
-* Mengembangkan sistem rekomendasi gaya belajar berbasis content based filtering menggunakan data karakteristik siswa.
+* Mengembangkan sistem rekomendasi lagu berbasis content-based filtering yang memanfaatkan fitur durasi, danceability, dan valence untuk memberikan rekomendasi lagu-lagu yang paling mirip dan relevan dengan lagu favorit pengguna, sehingga meningkatkan kepuasan dan pengalaman mendengarkan musik.
 
 ## Data Understanding
-**Sumber :** [*kagle*] [https://www.kaggle.com/datasets/qasimrajput/perfume-recomendation](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
+**Sumber :** [*kagle*] [[https://www.kaggle.com/datasets/qasimrajput/perfume-recomendation](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)](https://www.kaggle.com/datasets/geomack/spotifyclassification/data)
 
-Dataset yang digunakan dalam proyek ini berisi 1000 entri data, dataset ini bersih dari missing value atau duplicated value, terdiri dari 3 variabel numerik dan 5 variabel object. 
+Dataset yang digunakan dalam proyek ini berisi 2017 entri data, dataset ini bersih dari missing value atau duplicated value, terdiri dari 3 variabel numerik dan 5 variabel object. 
 
 Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
 * `gender`: jenis kelamin (female/male)
