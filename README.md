@@ -142,6 +142,7 @@ Oleh karena itu, digunakan metrik MSE (Mean Squared Error) yang mengukur rata-ra
 Dengan menggunakan MSE, sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
 > 🦉 Menampilkan lagu mirip dengan 'Boyfriend' berdasarkan durasi, danceability, dan valence:
 > **MSE untuk lagu 'Boyfriend': 0.4000**
+
 Ini berarti, rata-rata kesalahan kuadrat antara skor kemiripan yang dihitung sistem dan label kesukaan pengguna adalah 0.4 nilai ini cukup rendah, menunjukan bahwa sistem mampu memberikan rekomendasi yang cukup sesuai dengan prefensi pengguna berdasarkan fitur konten lagu.
 
 **Kesesuaian MSE dengan Problem Statement dan Goal Proyek:**
