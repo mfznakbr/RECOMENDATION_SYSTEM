@@ -133,28 +133,14 @@ TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
   
 ## EVALUASI 
 Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering digunakan metrik precision dan similarity matrix. Metrik ini digunakan untuk mengukur proporsi lagu yang relevan (disukai) dari total lagu yang direkomendasikan.
-### Similarity Matrix 
 
-**Alasan Penggunaan Similarity Matrix dalam Content-Based Filtering:**
-
-* Sistem ini menggunakan pendekatan **content-based filtering**, yaitu merekomendasikan lagu berdasarkan **kemiripan fitur kontennya** — seperti **durasi**, **danceability**, dan **valence** — bukan dari perilaku pengguna lain.
-* Untuk mengukur kemiripan antar lagu berdasarkan fitur tersebut, digunakan **similarity matrix** yang dihitung menggunakan **cosine similarity**. Matriks ini berisi nilai-nilai kemiripan antara setiap pasangan lagu, sehingga sistem dapat mengetahui lagu mana yang paling mirip satu sama lain secara konten.
-* Dengan menggunakan fungsi `similarity()`, sistem menghitung **rata-rata kemiripan** antara lagu yang dipilih pengguna dan **5 lagu teratas yang paling mirip** menurut similarity matrix. Nilai tinggi menunjukkan bahwa sistem berhasil menemukan lagu-lagu yang sangat dekat secara karakteristik dengan lagu favorit pengguna.
-
-
-**Kesimpulan:**
-
-* Sistem menghasilkan **rata-rata similarity sebesar 4.9999** untuk lagu **"Boyfriend"**, terhadap 5 lagu yang direkomendasikan. Ini menandakan bahwa lagu-lagu yang direkomendasikan memang memiliki **kemiripan konten yang sangat tinggi**, sesuai dengan pendekatan content-based filtering.
-* Pendekatan ini relevan dengan **problem statement** karena di tengah banyaknya lagu yang tersedia. Dengan menggunakan kemiripan fitur musik, sistem menyaring lagu-lagu yang memiliki *danceable*, *tingkat keceriaan*, dan *durasi* yang mirip dengan lagu favorit pengguna.
-* Selain membantu pengguna menemukan lagu-lagu yang cocok, sistem juga mendukung **goal proyek**, Karena setiap rekomendasi dibuat berdasarkan **fitur konten lagu**.
-
-### Precision
-**Alasan Pemilihan Metrik Precision :**
-* Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya yaitu durasi,danceability, dan valence maka penting untuk evaluasi seberapa akurat skor kemiripan tersebut mencerminkan prefensi pengguna.
+### MSE
+**Alasan Pemilihan Metrik MSE :**
+Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya yaitu durasi,danceability, dan valence maka penting untuk evaluasi seberapa akurat skor kemiripan tersebut mencerminkan prefensi pengguna.
 
 Dalam konteks ini, setiap skor kemiripan yang dihasilkan oleh sistem dapat dianggap sebagai "prediksi" seberapa disukai suatu lagu. Sedangkan label target (1 = suka, 0 = tidak suka) berfungsi sebagai fakta ground truth.
 
-Oleh karena itu, digunakan metrik MSE (Mean Squared Error) yang mengukur rata-rata selisih kuadrat antara skor kemiripan dan preferensi aktual pengguna. MSE memberikan penalti lebih besar jika sistem memberikan skor tinggi pada lagu yang tidak disukai, sehingga cocok digunakan untuk mengevaluasi kualitas sistem ini.
+Oleh karena itu, digunakan metrik MSE (Mean Squared Error) yang mengukur rata-rata selisih kuadrat antara skor kemiripan dan preferensi aktual pengguna. MSE memberikan peringatan lebih besar jika sistem memberikan skor tinggi pada lagu yang tidak disukai, sehingga cocok digunakan untuk mengevaluasi kualitas sistem ini.
 
 **Kesimpulan** :
 Dengan menggunakan MSE, sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
