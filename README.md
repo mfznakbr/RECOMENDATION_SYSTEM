@@ -86,9 +86,9 @@ Tahapan data preparation adalah sebagai berikut :
    - Alasan : Dengan menggabungkan semua fitur yang dipilih ke dalam dataframe, proses seperti normalisasi akan jadi lebih efisien
 4. Normalisasi Fitur Numerik.
    - Metode: Menggunakan `MinMaxScaler` dari `sklearn.preprocessing` untuk menormalisasi kolom:
-  * `valence`
-  * `danceability`
-  * `duration_ms`
+     * `valence`
+     * `danceability`
+     * `duration_ms`
    - Alasan : Normalisasi penting agar fitur-fitur tersebut berada dalam skala yang sama (0–1), sehingga tidak ada fitur yang mendominasi perhitungan kemiripan
   
 ## MODELING
