@@ -150,34 +150,37 @@ Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering 
 
 ### Precision
 **Alasan Pemilihan Metrik Precision :**
-* Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya (durasi, danceability, dan valence), maka kita perlu tahu apakah lagu-lagu tersebut benar-benar sesuai dengan preferensi pengguna. Label target (1 = suka, 0 = tidak suka) digunakan sebagai indikator relevansi. Oleh karena itu, precision adalah metrik yang paling tepat digunakan.
+* Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya yaitu durasi,danceability, dan valence maka penting untuk evaluasi seberapa akurat skor kemiripan tersebut mencerminkan prefensi pengguna.
+
+Dalam konteks ini, setiap skor kemiripan yang dihasilkan oleh sistem dapat dianggap sebagai "prediksi" seberapa disukai suatu lagu. Sedangkan label target (1 = suka, 0 = tidak suka) berfungsi sebagai fakta ground truth.
+
+Oleh karena itu, digunakan metrik MSE (Mean Squared Error) yang mengukur rata-rata selisih kuadrat antara skor kemiripan dan preferensi aktual pengguna. MSE memberikan penalti lebih besar jika sistem memberikan skor tinggi pada lagu yang tidak disukai, sehingga cocok digunakan untuk mengevaluasi kualitas sistem ini.
 
 **Kesimpulan** :
-Dengan nilai **precision sebesar 60%**, sistem rekomendasi ini telah berhasil memberikan hasil yang relevan untuk sebagian besar lagu yang direkomendasikan. Ini menunjukkan bahwa pendekatan **content-based filtering** dengan **cosine similarity** pada fitur-fitur musik seperti **durasi**, **danceability**, dan **valence** mampu mengenali karakteristik lagu yang mirip dan menyajikan rekomendasi yang sesuai dengan preferensi pengguna.
+Dengan menggunakan MSE, sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
+> 🦉 Menampilkan lagu mirip dengan 'Boyfriend' berdasarkan durasi, danceability, dan valence:
+> **MSE untuk lagu 'Boyfriend': 0.4000**
+Ini berarti, rata-rata kesalahan kuadrat antara skor kemiripan yang dihitung sistem dan label kesukaan pengguna adalah 0.4 nilai ini cukup rendah, menunjukan bahwa sistem mampu memberikan rekomendasi yang cukup sesuai dengan prefensi pengguna berdasarkan fitur konten lagu.
 
-Hal ini sejalan dengan **problem statement** yang diangkat, yaitu **pengguna sering kesulitan menemukan lagu yang benar-benar sesuai dengan preferensi dan suasana hati mereka secara cepat dan akurat**, terutama di tengah banyaknya pilihan lagu yang tersedia. Sistem ini membantu mengatasi masalah tersebut dengan menyaring dan menyarankan lagu-lagu yang secara konten memiliki kemiripan tinggi dengan lagu favorit pengguna.
+**Kesesuaian MSE dengan Problem Statement dan Goal Proyek:**
+Metrik MSE sangat sesuai dengan problem dan goal tersebut karena :
+- ia secara langsung mengukur sejauh mana sistem kesukaan pengguna berdasarkan fitur lagu.
+- evaluasi berbasis kesalahan prediksi memberi informasi objektif tentang akurasi sistem dalam memahami konten musik yang relevan.
 
-Selain itu, hasil ini juga mendukung **goal proyek**, yaitu mengembangkan sistem rekomendasi berbasis content-based filtering yang dapat **meningkatkan pengalaman dan kepuasan pengguna dalam mendengarkan musik**. Dengan mempertimbangkan aspek-aspek musikal seperti *mood* (valence), *energi* lagu (danceability), dan *durasi*, sistem ini memberikan rekomendasi yang tidak hanya teknis relevan, tetapi juga sesuai dengan emosi atau suasana yang diinginkan pengguna.
-
-Namun demikian, hasil precision sebesar 60% juga menunjukkan bahwa masih ada **ruang untuk peningkatan**, misalnya dengan menambahkan fitur lain (seperti genre, artist similarity, atau mood tagging) atau menggabungkan pendekatan ini dengan metode hybrid agar hasil rekomendasi menjadi lebih personal dan akurat.
+Dengan MSE, sistem dapat terus dievaluasi dan ditingkatkan berdasarkan hasil nyata dari rekomendasi yang diberikan, bukan hanya asumsi.
 
 **Tambahan**
 ### Precision
 **Precision** adalah metrik evaluasi yang digunakan untuk mengukur seberapa banyak item yang direkomendasikan benar-benar relevan.
 
-**Rumus precision:**
+📐 **Rumus MSE:**
 
 $$
-\text{Precision} = \frac{\text{Jumlah lagu relevan yang direkomendasikan}}{\text{Jumlah total lagu yang direkomendasikan (k)}}
+\text{MSE} = \frac{1}{k} \sum_{i=1}^{k} (y_i - \hat{y}_i)^2
 $$
 
-**Contoh cara kerja:**
+Keterangan:
 
-Jika dari 5 lagu yang direkomendasikan, terdapat 3 lagu yang sesuai preferensi pengguna (label `target = 1`), maka precision-nya:
-
-$$
-\frac{3}{5} = 0.60 \text{ atau } 60\%
-$$
-
-**Kenapa cocok?**
-Karena dalam sistem rekomendasi, kita ingin memastikan **lagu-lagu yang ditampilkan memang sesuai minat pengguna**. Metrik ini fokus pada **akurasi hasil yang ditampilkan**, bukan jumlah total yang tersedia.
+* $y_i$ = label aktual (`target`), yaitu 1 jika pengguna menyukai lagu ke-i, 0 jika tidak.
+* $\hat{y}_i$ = skor similarity yang dihitung sistem untuk lagu ke-i.
+* $k$ = jumlah lagu yang direkomendasikan.
