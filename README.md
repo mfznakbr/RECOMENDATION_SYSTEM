@@ -130,10 +130,6 @@ TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
 | 5  | 273853      | 0.787        | 0.867                        | Okay                            | Holy Ghost!         |
 
 
-  
-## EVALUASI 
-Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering digunakan metrik precision dan similarity matrix. Metrik ini digunakan untuk mengukur proporsi lagu yang relevan (disukai) dari total lagu yang direkomendasikan.
-
 ### MSE
 **Alasan Pemilihan Metrik MSE :**
 Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya yaitu durasi,danceability, dan valence maka penting untuk evaluasi seberapa akurat skor kemiripan tersebut mencerminkan prefensi pengguna.
