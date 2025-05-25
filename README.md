@@ -132,6 +132,7 @@ TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
 
 ### MSE
 **Alasan Pemilihan Metrik MSE :**
+
 Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya yaitu durasi,danceability, dan valence maka penting untuk evaluasi seberapa akurat skor kemiripan tersebut mencerminkan prefensi pengguna.
 
 Dalam konteks ini, setiap skor kemiripan yang dihasilkan oleh sistem dapat dianggap sebagai "prediksi" seberapa disukai suatu lagu. Sedangkan label target (1 = suka, 0 = tidak suka) berfungsi sebagai fakta ground truth.
@@ -139,6 +140,7 @@ Dalam konteks ini, setiap skor kemiripan yang dihasilkan oleh sistem dapat diang
 Oleh karena itu, digunakan metrik MSE (Mean Squared Error) yang mengukur rata-rata selisih kuadrat antara skor kemiripan dan preferensi aktual pengguna. MSE memberikan peringatan lebih besar jika sistem memberikan skor tinggi pada lagu yang tidak disukai, sehingga cocok digunakan untuk mengevaluasi kualitas sistem ini.
 
 **Kesimpulan** :
+
 Dengan menggunakan MSE, sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
 > 🦉 Menampilkan lagu mirip dengan 'Boyfriend' berdasarkan durasi, danceability, dan valence:
 > **MSE untuk lagu 'Boyfriend': 0.4000**
@@ -146,6 +148,7 @@ Dengan menggunakan MSE, sistem rekomendasi lagu berbasis content based filtering
 Ini berarti, rata-rata kesalahan kuadrat antara skor kemiripan yang dihitung sistem dan label kesukaan pengguna adalah 0.4 nilai ini cukup rendah, menunjukan bahwa sistem mampu memberikan rekomendasi yang cukup sesuai dengan prefensi pengguna berdasarkan fitur konten lagu.
 
 **Kesesuaian MSE dengan Problem Statement dan Goal Proyek:**
+
 Metrik MSE sangat sesuai dengan problem dan goal tersebut karena :
 - ia secara langsung mengukur sejauh mana sistem kesukaan pengguna berdasarkan fitur lagu.
 - evaluasi berbasis kesalahan prediksi memberi informasi objektif tentang akurasi sistem dalam memahami konten musik yang relevan.
@@ -154,6 +157,7 @@ Dengan MSE, sistem dapat terus dievaluasi dan ditingkatkan berdasarkan hasil nya
 
 **Tambahan**
 ### Precision
+
 **Precision** adalah metrik evaluasi yang digunakan untuk mengukur seberapa banyak item yang direkomendasikan benar-benar relevan.
 
 📐 **Rumus MSE:**
