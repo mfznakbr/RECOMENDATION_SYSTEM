@@ -17,7 +17,7 @@ Proyek ini mengembangkan sistem rekomendasi lagu berbasis analisis fitur audio s
 * Pengguna terkadang kesulitan menemukan lagu yang benar - benar sesuai dengan prefensi dan suasana hati mereka secara cepat dan akurat karena jumlah lagu yang tersedia sangat banyak.
 
 ### Goal
-* Mengembangkan sistem rekomendasi lagu berbasis content-based filtering yang memanfaatkan fitur durasi, danceability, dan valence untuk memberikan rekomendasi lagu-lagu yang paling mirip dan relevan dengan lagu favorit pengguna, sehingga meningkatkan kepuasan dan pengalaman mendengarkan musik.
+* Mengembangkan sistem rekomendasi lagu berbasis content-based filtering yang memanfaatkan fitur durasi, danceability, dan valence untuk memberikan rekomendasi lagu-lagu pada pengguna, sehingga meningkatkan kepuasan dan pengalaman mendengarkan musik.
 
 ## Data Understanding
 **Sumber :** [*kagle*] [[https://www.kaggle.com/datasets/qasimrajput/perfume-recomendation](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)](https://www.kaggle.com/datasets/geomack/spotifyclassification/data)
@@ -132,13 +132,28 @@ TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
 
   
 ## EVALUASI 
-Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering digunakan metrik precision. Metrik ini digunakan untuk mengukur proporsi lagu yang relevan (disukai) dari total lagu yang direkomendasikan.
+Untuk mengevaluasi performa sistem rekomendasi berbasis content based filtering digunakan metrik precision dan similarity matrix. Metrik ini digunakan untuk mengukur proporsi lagu yang relevan (disukai) dari total lagu yang direkomendasikan.
+### Similarity Matrix 
 
+**Alasan Penggunaan Similarity Matrix dalam Content-Based Filtering:**
+
+* Sistem ini menggunakan pendekatan **content-based filtering**, yaitu merekomendasikan lagu berdasarkan **kemiripan fitur kontennya** — seperti **durasi**, **danceability**, dan **valence** — bukan dari perilaku pengguna lain.
+* Untuk mengukur kemiripan antar lagu berdasarkan fitur tersebut, digunakan **similarity matrix** yang dihitung menggunakan **cosine similarity**. Matriks ini berisi nilai-nilai kemiripan antara setiap pasangan lagu, sehingga sistem dapat mengetahui lagu mana yang paling mirip satu sama lain secara konten.
+* Dengan menggunakan fungsi `similarity()`, sistem menghitung **rata-rata kemiripan** antara lagu yang dipilih pengguna dan **5 lagu teratas yang paling mirip** menurut similarity matrix. Nilai tinggi menunjukkan bahwa sistem berhasil menemukan lagu-lagu yang sangat dekat secara karakteristik dengan lagu favorit pengguna.
+
+
+**Kesimpulan:**
+
+* Sistem menghasilkan **rata-rata similarity sebesar 4.9999** untuk lagu **"Boyfriend"**, terhadap 5 lagu yang direkomendasikan. Ini menandakan bahwa lagu-lagu yang direkomendasikan memang memiliki **kemiripan konten yang sangat tinggi**, sesuai dengan pendekatan content-based filtering.
+* Pendekatan ini relevan dengan **problem statement** karena di tengah banyaknya lagu yang tersedia. Dengan menggunakan kemiripan fitur musik, sistem menyaring lagu-lagu yang memiliki *danceable*, *tingkat keceriaan*, dan *durasi* yang mirip dengan lagu favorit pengguna.
+* Selain membantu pengguna menemukan lagu-lagu yang cocok, sistem juga mendukung **goal proyek**, Karena setiap rekomendasi dibuat berdasarkan **fitur konten lagu**.
+
+### Precision
 **Alasan Pemilihan Metrik Precision :**
 * Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya (durasi, danceability, dan valence), maka kita perlu tahu apakah lagu-lagu tersebut benar-benar sesuai dengan preferensi pengguna. Label target (1 = suka, 0 = tidak suka) digunakan sebagai indikator relevansi. Oleh karena itu, precision adalah metrik yang paling tepat digunakan.
 
 **Kesimpulan** :
-* Dengan nilai **precision sebesar 60%**, sistem rekomendasi ini telah berhasil memberikan hasil yang relevan untuk sebagian besar lagu yang direkomendasikan. Ini menunjukkan bahwa pendekatan **content-based filtering** dengan **cosine similarity** pada fitur-fitur musik seperti **durasi**, **danceability**, dan **valence** mampu mengenali karakteristik lagu yang mirip dan menyajikan rekomendasi yang sesuai dengan preferensi pengguna.
+Dengan nilai **precision sebesar 60%**, sistem rekomendasi ini telah berhasil memberikan hasil yang relevan untuk sebagian besar lagu yang direkomendasikan. Ini menunjukkan bahwa pendekatan **content-based filtering** dengan **cosine similarity** pada fitur-fitur musik seperti **durasi**, **danceability**, dan **valence** mampu mengenali karakteristik lagu yang mirip dan menyajikan rekomendasi yang sesuai dengan preferensi pengguna.
 
 Hal ini sejalan dengan **problem statement** yang diangkat, yaitu **pengguna sering kesulitan menemukan lagu yang benar-benar sesuai dengan preferensi dan suasana hati mereka secara cepat dan akurat**, terutama di tengah banyaknya pilihan lagu yang tersedia. Sistem ini membantu mengatasi masalah tersebut dengan menyaring dan menyarankan lagu-lagu yang secara konten memiliki kemiripan tinggi dengan lagu favorit pengguna.
 
