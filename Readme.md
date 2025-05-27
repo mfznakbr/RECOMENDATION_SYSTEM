@@ -143,9 +143,9 @@ Oleh karena itu, digunakan metrik MSE (Mean Squared Error), MAE (Mean Absolute E
 
 Dengan menggunakan MSE, MAE, RMSE sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
 > 🦉 Menampilkan lagu mirip dengan 'Boyfriend' berdasarkan durasi, danceability, dan valence:
-> **MSE untuk lagu 'Boyfriend': 0.4000**
-> **MAE untuk lagu 'Boyfriend': 0.4000**
-> **RMSE untuk lagu 'Boyfriend': 0.4000**
+   - **MSE untuk lagu 'Boyfriend': 0.4000**
+   - **MAE untuk lagu 'Boyfriend': 0.4000**
+   - **RMSE untuk lagu 'Boyfriend': 0.4000**
 
 Ini berarti, rata-rata kesalahan kuadrat antara skor kemiripan yang dihitung sistem dan label kesukaan pengguna adalah 0.4 nilai ini cukup rendah, menunjukan bahwa sistem mampu memberikan rekomendasi yang cukup sesuai dengan prefensi pengguna berdasarkan fitur konten lagu.
 
