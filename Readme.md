@@ -130,30 +130,32 @@ TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
 | 5  | 273853      | 0.787        | 0.867                        | Okay                            | Holy Ghost!         |
 
 
-### MSE
+### MSE, MAE, RMSE
 **Alasan Pemilihan Metrik MSE :**
 
 Karena sistem ini merekomendasikan lagu berdasarkan kemiripan fitur kontennya yaitu durasi,danceability, dan valence maka penting untuk evaluasi seberapa akurat skor kemiripan tersebut mencerminkan prefensi pengguna.
 
 Dalam konteks ini, setiap skor kemiripan yang dihasilkan oleh sistem dapat dianggap sebagai "prediksi" seberapa disukai suatu lagu. Sedangkan label target (1 = suka, 0 = tidak suka) berfungsi sebagai fakta ground truth.
 
-Oleh karena itu, digunakan metrik MSE (Mean Squared Error) yang mengukur rata-rata selisih kuadrat antara skor kemiripan dan preferensi aktual pengguna. MSE memberikan peringatan lebih besar jika sistem memberikan skor tinggi pada lagu yang tidak disukai, sehingga cocok digunakan untuk mengevaluasi kualitas sistem ini.
+Oleh karena itu, digunakan metrik MSE (Mean Squared Error), MAE (Mean Absolute Error), dan RMSE (Root Mean Squared Error) untuk mengukur rata-rata selisih antara skor kemiripan dan preferensi aktual pengguna. MSE sangat berguna karena memberikan penalti lebih besar terhadap kesalahan prediksi yang besar, misalnya saat sistem memberikan skor tinggi pada lagu yang sebenarnya tidak disukai. Hal ini membuat MSE cocok digunakan untuk mengevaluasi kualitas sistem rekomendasi ini.
 
 **Kesimpulan** :
 
-Dengan menggunakan MSE, sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
+Dengan menggunakan MSE, MAE, RMSE sistem rekomendasi lagu berbasis content based filtering menunjukan performa : 
 > 🦉 Menampilkan lagu mirip dengan 'Boyfriend' berdasarkan durasi, danceability, dan valence:
 > **MSE untuk lagu 'Boyfriend': 0.4000**
+> **MAE untuk lagu 'Boyfriend': 0.4000**
+> **RMSE untuk lagu 'Boyfriend': 0.4000**
 
 Ini berarti, rata-rata kesalahan kuadrat antara skor kemiripan yang dihitung sistem dan label kesukaan pengguna adalah 0.4 nilai ini cukup rendah, menunjukan bahwa sistem mampu memberikan rekomendasi yang cukup sesuai dengan prefensi pengguna berdasarkan fitur konten lagu.
 
-**Kesesuaian MSE dengan Problem Statement dan Goal Proyek:**
+**Kesesuaian metrik dengan Problem Statement dan Goal Proyek:**
 
-Metrik MSE sangat sesuai dengan problem dan goal tersebut karena :
+Metrik yang digunakan sangat sesuai dengan problem dan goal tersebut karena :
 - ia secara langsung mengukur sejauh mana sistem kesukaan pengguna berdasarkan fitur lagu.
 - evaluasi berbasis kesalahan prediksi memberi informasi objektif tentang akurasi sistem dalam memahami konten musik yang relevan.
 
-Dengan MSE, sistem dapat terus dievaluasi dan ditingkatkan berdasarkan hasil nyata dari rekomendasi yang diberikan, bukan hanya asumsi.
+Dengan MSE, MAE, RMSE sistem dapat terus dievaluasi dan ditingkatkan berdasarkan hasil nyata dari rekomendasi yang diberikan, bukan hanya asumsi.
 
 **Tambahan**
 ### Precision
