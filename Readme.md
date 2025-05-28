@@ -22,7 +22,7 @@ Proyek ini mengembangkan sistem rekomendasi lagu berbasis analisis fitur audio s
 ## Data Understanding
 **Sumber :** [*kagle*] [[https://www.kaggle.com/datasets/qasimrajput/perfume-recomendation](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)](https://www.kaggle.com/datasets/geomack/spotifyclassification/data)
 
-Dataset yang digunakan dalam proyek ini berisi 2017 entri data, dataset ini bersih dari missing value atau duplicated value, terdiri dari 15 variabel numerik dan 2 variabel object. 
+Dataset yang digunakan dalam proyek ini berisi 2017 entri data, setelah di cek menggunakan fungsi isna().sum() dan dupicate().sum() dataset ini bersih dari missing value atau duplicated value, untuk jumlah variabel atau fitur dataset ini terdiri dari 15 variabel numerik dan 2 variabel object. 
 
 Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
 * `Unnamed: 0`: ID unik setiap baris data
@@ -56,17 +56,12 @@ Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
  
 ## DATA PREPARATION
 Tahapan data preparation adalah sebagai berikut :
-- Pengecekan missing value dan duplicated value
 - Ekstraksi Fitur ke List
 - Buat Dataframe Untuk Model Sistem Rekomendasi
 - Normalisasi Fitur Numerik.
 
 **Tambahan :**
-1. Pengecekan Missing Value dan Duplicate Value
-   - Metode : menggunakan fungsi isna().sum() untuk melihat jumlah missing value dan fungsi dupilcated().sum() untuk melihat adakah indikasi duplicate
-   - Hasil : Tidak ada missing value ataupun duplicated value dalam dataset.
-   - Alasan : Penting untuk memastikan integritas data sebelum lanjut ke tahap modeling atau tahap preparation selanjutnya. 
-2.    Ekstrasi Fitur ke List
+1.    Ekstrasi Fitur ke List
    - Metode : Menggunakan fungsi tolist() untuk beberapa kolom ialah :
      * artist
      * single_title
@@ -76,7 +71,7 @@ Tahapan data preparation adalah sebagai berikut :
    - Alasan :
      * fitur tersebut mewakili karakteristik konten lagu yang akan digunakan dalam model rekomendasi berbasis content-based-filtering.
      * fitur numerik seperti valence, danceability, dan duration_ms dipilih karena memiliki konstribusi signifikan dalam mengukur kemiripan antar lagu 
-3. Buat Dataframe untuk Sistem Rekomendasi.
+2. Buat Dataframe untuk Sistem Rekomendasi.
    - Metode : Menggunakan fungsi pd.DataFrame untuk membuat dataframe dari kolom yg telah di ekstraksi. Mengubah nama kolom agar lebih mudah dibaca seperti :
      * "song_title" diubah menjadi "Judul Lagu"
      * "artist" tetap
@@ -84,7 +79,7 @@ Tahapan data preparation adalah sebagai berikut :
      * "danceability" tetap
      * "valence" menjadi "tingkat keceriaan"
    - Alasan : Dengan menggabungkan semua fitur yang dipilih ke dalam dataframe, proses seperti normalisasi akan jadi lebih efisien
-4. Normalisasi Fitur Numerik.
+3. Normalisasi Fitur Numerik.
    - Metode: Menggunakan `MinMaxScaler` dari `sklearn.preprocessing` untuk menormalisasi kolom:
      * `valence`
      * `danceability`
