@@ -22,7 +22,7 @@ Proyek ini mengembangkan sistem rekomendasi lagu berbasis analisis fitur audio s
 ## Data Understanding
 **Sumber :** [*kagle*] [[https://www.kaggle.com/datasets/qasimrajput/perfume-recomendation](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)](https://www.kaggle.com/datasets/geomack/spotifyclassification/data)
 
-Dataset yang digunakan dalam proyek ini berisi 2017 entri data, setelah di cek menggunakan fungsi isna().sum() dan dupicate().sum() dataset ini bersih dari missing value atau duplicated value, untuk jumlah variabel atau fitur dataset ini terdiri dari 15 variabel numerik dan 2 variabel object. 
+Dataset yang digunakan dalam proyek ini berisi 2017 entri data, setelah di cek menggunakan fungsi info() dataseti terlihat ini bersih dari missing value, untuk jumlah variabel atau fitur dataset ini terdiri dari 15 variabel numerik dan 2 variabel object. 
 
 Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
 * `Unnamed: 0`: ID unik setiap baris data
