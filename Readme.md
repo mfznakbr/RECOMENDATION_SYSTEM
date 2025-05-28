@@ -124,6 +124,7 @@ TOP 5 Rekomendasi lagu paling mirip dengan "Boyfriend" :
 | 4  | 254067      | 0.779        | 0.857                        | Take Me There - Remix          | Blackstreet         |
 | 5  | 273853      | 0.787        | 0.867                        | Okay                            | Holy Ghost!         |
 
+## EVALUATION
 
 ### MSE, MAE, RMSE
 **Alasan Pemilihan Metrik MSE :**
