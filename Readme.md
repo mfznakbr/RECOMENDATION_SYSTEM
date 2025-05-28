@@ -56,12 +56,17 @@ Berikut adalah penjelasan dari masing - masing variabel dalam dataset :
  
 ## DATA PREPARATION
 Tahapan data preparation adalah sebagai berikut :
+- Cek Missing Value dan Duplicate
 - Ekstraksi Fitur ke List
 - Buat Dataframe Untuk Model Sistem Rekomendasi
 - Normalisasi Fitur Numerik.
 
 **Tambahan :**
-1.    Ekstrasi Fitur ke List
+1. Pengecekan Missing Value dan Duplicate Value
+   - Metode : menggunakan fungsi isna().sum() untuk melihat jumlah missing value dan fungsi dupilcated().sum() untuk melihat adakah indikasi duplicate
+   - Hasil : Tidak ada missing value ataupun duplicated value dalam dataset.
+   - Alasan : Penting untuk memastikan integritas data sebelum lanjut ke tahap modeling atau tahap preparation selanjutnya. 
+2. Ekstrasi Fitur ke List
    - Metode : Menggunakan fungsi tolist() untuk beberapa kolom ialah :
      * artist
      * single_title
@@ -71,7 +76,7 @@ Tahapan data preparation adalah sebagai berikut :
    - Alasan :
      * fitur tersebut mewakili karakteristik konten lagu yang akan digunakan dalam model rekomendasi berbasis content-based-filtering.
      * fitur numerik seperti valence, danceability, dan duration_ms dipilih karena memiliki konstribusi signifikan dalam mengukur kemiripan antar lagu 
-2. Buat Dataframe untuk Sistem Rekomendasi.
+3. Buat Dataframe untuk Sistem Rekomendasi.
    - Metode : Menggunakan fungsi pd.DataFrame untuk membuat dataframe dari kolom yg telah di ekstraksi. Mengubah nama kolom agar lebih mudah dibaca seperti :
      * "song_title" diubah menjadi "Judul Lagu"
      * "artist" tetap
@@ -79,7 +84,7 @@ Tahapan data preparation adalah sebagai berikut :
      * "danceability" tetap
      * "valence" menjadi "tingkat keceriaan"
    - Alasan : Dengan menggabungkan semua fitur yang dipilih ke dalam dataframe, proses seperti normalisasi akan jadi lebih efisien
-3. Normalisasi Fitur Numerik.
+4. Normalisasi Fitur Numerik.
    - Metode: Menggunakan `MinMaxScaler` dari `sklearn.preprocessing` untuk menormalisasi kolom:
      * `valence`
      * `danceability`
